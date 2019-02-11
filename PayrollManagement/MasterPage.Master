@@ -1,0 +1,79 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="PayrollManagement.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Payroll Management</title>
+    <link rel="stylesheet" type="text/css" href="StyleSheet.css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        
+        <div id="wrap">
+
+<div id="header">
+<h1>
+    <asp:Image ID="LibraPay" CssClass="pad" runat="server" Height="65px" ImageUrl="~/images/librapay.jpg" BackColor="#FFFF99" BorderColor="#666666" BorderStyle="Outset" />
+    &nbsp;
+    <asp:ImageButton ID="ImageButton1" CssClass="logo" runat="server" Height="28px" ImageAlign="AbsBottom" ImageUrl="~/images/icons/usericon.png" />
+    <asp:Button runat="server" Text="Your Account" ID="accountInfo" CausesValidation="false"/>
+    <asp:ImageButton ID="ImageButton2" runat="server" Height="30px" ImageAlign="AbsBottom" ImageUrl="~/images/icons/logouticon.png" />
+    <asp:Button id="login2" runat="server" Text="login" OnClick="login2_Click" CausesValidation="false"/>
+    <asp:ImageButton ID="passChange" runat="server" Height="20px" ImageAlign="AbsBottom" ImageUrl="~/images/changePassword.png" Visible="false" OnClick="passChange_Click"/>
+</h1>
+</div>
+
+<div id="menu">
+    <nav>
+<ul>
+<li><a href="Index.aspx">
+    <asp:ImageButton ID="ImageButton3" runat="server" Height="30px" ImageAlign="AbsMiddle" ImageUrl="~/images/icons/homeicon.png" Width="28px" />
+    &nbsp;Home</a></li>
+<li><a href="Registration.aspx">
+    <asp:ImageButton ID="ImageButton4" runat="server" Height="30px" ImageAlign="AbsMiddle" ImageUrl="~/images/icons/registrationicon.png" Width="28px" />
+    Registration</a></li>
+<li><a href="Paystub Decision Page.aspx">
+    <asp:ImageButton ID="ImageButton5" runat="server" Height="32px" ImageAlign="AbsMiddle" ImageUrl="~/images/icons/paystubicon.png" Width="28px" />
+    &nbsp;Paystub</a></li>
+<li><a href="Employee Detail.aspx">
+    <asp:ImageButton ID="ImageButton6" runat="server" Height="32px" ImageAlign="AbsMiddle" ImageUrl="~/images/icons/employeeicon.png" Width="35px" />
+    &nbsp;Employee info</a></li>
+<li><a href="Notification.aspx">
+    <asp:ImageButton ID="ImageButton7" runat="server" Height="30px" ImageAlign="AbsMiddle" ImageUrl="~/images/icons/notifyicon.png" Width="32px" />
+    Notification</a></li>
+</ul>
+        </nav>
+</div>
+
+<div id="contentwrap"> 
+
+<div id="content">
+
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+
+</div>
+
+<div id="sidebar">
+<h3>News</h3>
+    <p>&nbsp;</p>
+
+</div>
+
+<div style="clear: both;"> </div>
+
+</div>
+
+<div id="footer">
+<p>© Copyright Centennial College | Fall 2018 - COMP231 | Aman Desai - Gabriel Norman - Fuad Mannan - Neenu Shaji - Shiv Rana - Reilly Martinez </p>
+</div>
+
+</div>
+
+    </form>
+</body>
+</html>
+
