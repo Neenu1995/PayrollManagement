@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "899662307913",
+    "firebase_url": "https://payrollapplication-24728.firebaseio.com",
+    "project_id": "payrollapplication-24728",
+    "storage_bucket": "payrollapplication-24728.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899662307913:android:2d2648fa6b8ffef3",
+        "android_client_info": {
+          "package_name": "com.example.admin.payrollapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899662307913-o0brgf0a7i0e35803nh6jp1i9e54904q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRVgdXe2R_QLyDn_8hOzMfAfUK4GDXvNI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
