@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "899662307913-be0u52b21m890ofk8eja1glrapp5hgol.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.admin.payrollapplication",
+            "certificate_hash": "4d788d8a4deecea4d34ee922fb9ee1c7c6161a51"
+          }
+        },
+        {
           "client_id": "899662307913-o0brgf0a7i0e35803nh6jp1i9e54904q.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899662307913-o0brgf0a7i0e35803nh6jp1i9e54904q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
