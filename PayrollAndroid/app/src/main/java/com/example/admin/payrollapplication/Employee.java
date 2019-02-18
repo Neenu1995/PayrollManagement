@@ -4,11 +4,11 @@ public class Employee {
 
     private String EmployeeID;
     private String FirstName;
+    private String Password;
     private String LastName;
     private String Address;
     private String PhoneNumber;
     private String Email;
-    private String SIN;
     private String Title;
 
 
@@ -16,14 +16,23 @@ public class Employee {
 
     }
 
-    public Employee(String employeeID, String firstName, String lastName, String address, String phoneNumber, String email, String SIN, String title) {
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
+    }
+
+    public Employee(String employeeID, String firstName,String lastName, String password,  String address, String phoneNumber, String email, String title) {
         EmployeeID = employeeID;
         FirstName = firstName;
         LastName = lastName;
+        Password = password;
         Address = address;
         PhoneNumber = phoneNumber;
         Email = email;
-        this.SIN = SIN;
+
         Title = title;
     }
 
@@ -36,7 +45,6 @@ public class Employee {
                 ", Address='" + Address + '\'' +
                 ", PhoneNumber='" + PhoneNumber + '\'' +
                 ", Email='" + Email + '\'' +
-                ", SIN='" + SIN + '\'' +
                 ", Title='" + Title + '\'' +
                 '}';
     }
@@ -87,14 +95,6 @@ public class Employee {
 
     public void setEmail(String email) {
         Email = email;
-    }
-
-    public String getSIN() {
-        return SIN;
-    }
-
-    public void setSIN(String SIN) {
-        this.SIN = SIN;
     }
 
     public String getTitle() {

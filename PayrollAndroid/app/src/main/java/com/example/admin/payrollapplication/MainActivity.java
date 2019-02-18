@@ -23,11 +23,9 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    EditText nameText;
-    EditText passwordText;
-    Button submitBtn;
-    Button registerButton;
 
+    Button registerButton;
+    Button emailBtn;
     // Write a message to the database
     DatabaseReference myRef ;
 
@@ -37,16 +35,9 @@ public class MainActivity extends AppCompatActivity {
         //FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_main);
         myRef = FirebaseDatabase.getInstance().getReference("person");
-        nameText = findViewById(R.id.nameText);
-        passwordText = findViewById(R.id.passwordText);
-        submitBtn = findViewById(R.id.submitButton);
+
         registerButton = findViewById(R.id.registerButton);
-        submitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                readPerson();
-            }
-        });
+
         registerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
 
@@ -56,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
-        Button startBtn = (Button) findViewById(R.id.sendEmail);
-        startBtn.setOnClickListener(new View.OnClickListener() {
+        emailBtn = (Button) findViewById(R.id.sendEmail);
+        emailBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 sendEmail();
             }
@@ -66,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void addPerson(){
-        String name = nameText.getText().toString().trim();
-        String password = passwordText.getText().toString().trim();
+   /* private void addPerson(){
+       // String name = nameText.getText().toString().trim();
+        //String password = passwordText.getText().toString().trim();
         if(!TextUtils.isEmpty(name)){
             String id = myRef.push().getKey();
             Person person1 = new Person(id,name,password);
@@ -80,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
 
-    }
+    }*/
     protected void sendEmail() {
         Log.i("Send email", "");
         String[] TO = {""};

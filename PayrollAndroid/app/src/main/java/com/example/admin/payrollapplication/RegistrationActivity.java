@@ -1,5 +1,6 @@
 package com.example.admin.payrollapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,12 +12,14 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.jar.Attributes;
+
 public class RegistrationActivity extends AppCompatActivity {
     EditText fnameText;
     EditText lnameText;
     EditText phoneText;
     EditText emailText;
-    EditText sinText;
+    EditText passwordText;
     EditText titleText;
     EditText addressText;
     static Integer count = 0;
@@ -32,10 +35,10 @@ public class RegistrationActivity extends AppCompatActivity {
         myRef = FirebaseDatabase.getInstance().getReference("employee");
         fnameText = findViewById(R.id.fnameText);
         lnameText = findViewById(R.id.lnameText);
+        passwordText = findViewById(R.id.passwordText);
         phoneText = findViewById(R.id.phoneText);
         emailText = findViewById(R.id.emailText);
         addressText = findViewById(R.id.addressText);
-        sinText = findViewById(R.id.sinText);
         titleText = findViewById(R.id.titleText);
         submitBtn = findViewById(R.id.submitButton);
 
@@ -50,17 +53,23 @@ public class RegistrationActivity extends AppCompatActivity {
     private void addEmployee(){
         String fname = fnameText.getText().toString().trim();
         String lname = lnameText.getText().toString().trim();
+        String password = passwordText.getText().toString().trim();
         String email = emailText.getText().toString().trim();
         String phone = phoneText.getText().toString().trim();
         String address = addressText.getText().toString().trim();
-        String sin = sinText.getText().toString().trim();
+
         String title = titleText.getText().toString().trim();
-        if(!TextUtils.isEmpty(sin)){
+        if(!TextUtils.isEmpty(fname)){
             String key = myRef.push().getKey();
             String id = generateID(fname,lname);
-            Employee emp = new Employee(id,fname,lname,address,phone,email,sin,title);
+            Employee emp = new Employee(id,fname,lname,password,address,phone,email,title);
+            //myRef.setValue(id);
             myRef.child(key).setValue(emp);
+
             Toast.makeText(this,"Data added.",Toast.LENGTH_LONG).show();
+            Intent myIntent = new Intent(RegistrationActivity.this,
+                    MainActivity.class);
+            startActivity(myIntent);
         }
         else{
             Toast.makeText(this,"Enter name.",Toast.LENGTH_LONG).show();

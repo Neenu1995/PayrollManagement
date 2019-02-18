@@ -15,12 +15,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText nameText;
-    EditText passwordText;
+    EditText nameTextV;
+    EditText passwordTextV;
     Button submitBtn;
     DatabaseReference myRef;
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "LoginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,39 +28,45 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         myRef = FirebaseDatabase.getInstance().getReference("person");
-        nameText = findViewById(R.id.nameText);
-        passwordText = findViewById(R.id.passwordText);
+        nameTextV = findViewById(R.id.nameText);
+        passwordTextV = findViewById(R.id.passwordText);
         submitBtn = findViewById(R.id.submitButton);
+
+
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
+             //checkCredentials();
 
-                // Start NewActivity.class
+
                 Intent myIntent = new Intent(LoginActivity.this,
                         MainActivity.class);
                 startActivity(myIntent);
+
             }
         });
 
 
     }
 
-    private boolean checkCredentials(final String name) {
+    private void checkCredentials() {
 
         myRef.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                // String value = dataSnapshot.getValue(String.class);
-                boolean result = false;
+                String name = nameTextV.getText().toString().trim();
+                String password = passwordTextV.getText().toString().trim();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
                     String key = ds.getKey();
                     Employee emp = ds.getValue(Employee.class);
 
-                    if(name.equals(emp.getFirstName())){
-                       result = true;
+                    if(name.equals(emp.getFirstName()) && password.equals(emp.getPassword())){
+
+                        Intent myIntent = new Intent(LoginActivity.this,
+                                MainActivity.class);
+                        startActivity(myIntent);
                     }
                     Log.d(TAG, "Test Name is: " + emp.getFirstName());
                     Log.d(TAG, "Test ID is: " + emp.getLastName());
@@ -75,8 +81,9 @@ public class LoginActivity extends AppCompatActivity {
                 // Failed to read value
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
+
         });
 
-        return false;
+
     }
 }
