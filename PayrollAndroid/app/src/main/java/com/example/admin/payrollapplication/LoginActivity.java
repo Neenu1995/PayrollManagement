@@ -46,19 +46,21 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean checkCredentials(final String name) {
+
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 // String value = dataSnapshot.getValue(String.class);
+                boolean result = false;
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
                     String key = ds.getKey();
                     Employee emp = ds.getValue(Employee.class);
 
                     if(name.equals(emp.getFirstName())){
-                        return true;
+                       result = true;
                     }
                     Log.d(TAG, "Test Name is: " + emp.getFirstName());
                     Log.d(TAG, "Test ID is: " + emp.getLastName());
