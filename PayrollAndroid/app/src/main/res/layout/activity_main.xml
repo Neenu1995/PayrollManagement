@@ -22,6 +22,20 @@
         android:text="Send notification" />
 
     <Button
+        android:id="@+id/empButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="View Details (Employee)" />
+
+    <Button
+        android:id="@+id/deptButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="View Details (Dept Manager)" />
+
+    <Button
         android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

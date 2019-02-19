@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
+    Button empButton;
+    Button deptButton;
     Button registerButton;
     Button emailBtn;
     // Write a message to the database
@@ -35,6 +37,30 @@ public class MainActivity extends AppCompatActivity {
         //FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_main);
         myRef = FirebaseDatabase.getInstance().getReference("person");
+
+        empButton = findViewById(R.id.empButton);
+
+        empButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+
+                // Start NewActivity.class
+                Intent myIntent = new Intent(MainActivity.this,
+                        DetailsForEmployeeActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
+        deptButton = findViewById(R.id.deptButton);
+
+        deptButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+
+                // Start NewActivity.class
+                Intent myIntent = new Intent(MainActivity.this,
+                        DetailsForManager  .class);
+                startActivity(myIntent);
+            }
+        });
 
         registerButton = findViewById(R.id.registerButton);
 

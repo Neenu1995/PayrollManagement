@@ -13,8 +13,8 @@
         android:id="@+id/emplblTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        tools:text="@string/emplblTitle" />
+        android:text="Employee Information"
+        android:textSize="24sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-                tools:text="@string/emplblFname" />
+                android:text="First Name:" />
 
             <EditText
                 android:id="@+id/emptxtFname"
@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-                tools:text="@string/emplblLastname" />
+                android:text="Last Name:" />
 
             <EditText
                 android:id="@+id/emptxtLname"
@@ -74,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-                tools:text="@string/emplblAddress" />
+                android:text="Address" />
 
             <EditText
                 android:id="@+id/emptxtAddress"
@@ -84,7 +84,6 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:padding="20dp"
-                android:text="Address"
                 tools:text="@string/emptxtAddress" />
         </LinearLayout>
 
@@ -97,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-                tools:text="@string/emplblPhone" />
+                android:text="Phone:" />
 
             <EditText
                 android:id="@+id/emptxtPhone"
@@ -119,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-                tools:text="@string/emplblEmail" />
+                android:text="Email:" />
 
             <EditText
                 android:id="@+id/emptxtEmail"
@@ -137,4 +136,4 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"/>
 
-</>
+</LinearLayout>
