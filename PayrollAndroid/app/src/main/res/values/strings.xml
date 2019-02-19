@@ -11,4 +11,13 @@
     <string name="emptxtPhone" />
     <string name="emptxtEmail" />
     <string name="emplblTitle">Employee Information</string>
+    <string name="deptbtnView">View</string>
+    <string name="deptbtnEdit">Edit</string>
+    <string name="deptbtnSearch">Search</string>
+    <string name="depttxtEmpId" />
+    <string name="depttxtFname" />
+    <string name="depttxtLname" />
+    <string name="depttxtAddress" />
+    <string name="depttxtPhone" />
+    <string name="depttxtEmail" />
 </resources>
