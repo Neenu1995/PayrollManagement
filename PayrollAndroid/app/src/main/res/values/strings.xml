@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">PayrollApplication</string>
+    <string name="emplblFname">First Name:</string>
+    <string name="emplblLastname">Last Name:</string>
+    <string name="emplblAddress">Address:</string>
+    <string name="emplblPhone">Phone:</string>
+    <string name="emplblEmail">Email:</string>
+    <string name="emptxtFname" />
+    <string name="emptxtLname" />
+    <string name="emptxtAddress" />
+    <string name="emptxtPhone" />
+    <string name="emptxtEmail" />
+    <string name="emplblTitle">Employee Information</string>
 </resources>
