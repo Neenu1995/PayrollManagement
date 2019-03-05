@@ -19,9 +19,8 @@
         <activity android:name=".DetailsForManager" />
         <activity android:name=".DetailsForEmployeeActivity" />
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ScheduleActivity" />
     </application>
 
 </manifest>

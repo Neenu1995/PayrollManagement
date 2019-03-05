@@ -20,4 +20,6 @@
     <string name="depttxtAddress" />
     <string name="depttxtPhone" />
     <string name="depttxtEmail" />
+    <string name="start_shift">Start of Shift</string>
+    <string name="end_shift">End of Shift</string>
 </resources>
