@@ -15,9 +15,10 @@
         android:text="Employee Information"
         android:textSize="24sp" />
 
-    <ListView
-        android:id="@+id/deptListview"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/employee_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
 
 </LinearLayout>

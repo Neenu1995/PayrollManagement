@@ -2,6 +2,8 @@ package com.example.admin.payrollapplication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -17,46 +19,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DetailsForManager extends AppCompatActivity {
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
-    ListView l1;
-    List<String> empList;
-    DatabaseReference myRef;
-    ArrayAdapter<String> adapter;
-    Employee employee;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_for_manager);
-        l1 = (ListView)findViewById(R.id.deptListview);
+        recyclerView = (RecyclerView) findViewById(R.id.employee_list);
 
-        empList = new ArrayList<>();
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        recyclerView.setHasFixedSize(true);
 
-        myRef = FirebaseDatabase.getInstance().getReference();
+        // use a linear layout manager
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
 
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                empList.clear();
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                // String value = dataSnapshot.getValue(String.class);
-                for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    employee = ds.getValue(Employee.class);
-                    empList.add(employee.getFirstName());
-                    empList.add(employee.getLastName());
-                    empList.add(employee.getAddress());
-                    empList.add(employee.getPhoneNumber());
-                    empList.add(employee.getEmail());
-                }
-                adapter = new ArrayAdapter<>(DetailsForManager.this, android.R.layout.activity_list_item);
-                l1.setAdapter(adapter);
-            }
+        // specify an adapter (see also next example)
+        mAdapter = new MyAdapter(myDataset);
+        recyclerView.setAdapter(mAdapter);
 
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Toast.makeText(getApplicationContext(), "There is some error", Toast.LENGTH_LONG).show();
-            }
-        });
     }
 }

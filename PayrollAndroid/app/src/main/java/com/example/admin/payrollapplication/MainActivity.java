@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
         empButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-
                 // Start NewActivity.class
                 Intent myIntent = new Intent(MainActivity.this,
                         DetailsForEmployeeActivity.class);
