@@ -32,7 +32,6 @@ public class Employee {
         Address = address;
         PhoneNumber = phoneNumber;
         Email = email;
-
         Title = title;
     }
 

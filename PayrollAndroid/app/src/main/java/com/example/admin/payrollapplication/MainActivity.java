@@ -92,8 +92,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-
    /* private void addPerson(){
        // String name = nameText.getText().toString().trim();
         //String password = passwordText.getText().toString().trim();
@@ -106,8 +104,6 @@ public class MainActivity extends AppCompatActivity {
             else{
             Toast.makeText(this,"Enter name.",Toast.LENGTH_LONG).show();
             }
-
-
     }*/
     protected void sendEmail() {
         Log.i("Send email", "");
@@ -148,8 +144,6 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG, "Test ID is: " + p.getId());
                     //Toast.makeText(this,p.toString(),Toast.LENGTH_LONG).show();
                 }
-
-
             }
 
             @Override
@@ -159,6 +153,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 
 
