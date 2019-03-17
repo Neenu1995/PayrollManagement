@@ -1,27 +1,51 @@
 package com.example.admin.payrollapplication;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesAdapter.ViewHolder> {
+    private List<Employee> employees;
+
+    public EmployeesAdapter(List<Employee> employees) {
+        this.employees = employees;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return null;
+        Context context = viewGroup.getContext();
+        LayoutInflater inflater = LayoutInflater.from(context);
+
+        View employeeView = inflater.inflate(R.layout.item_employee, viewGroup, false);
+
+        ViewHolder viewHolder = new ViewHolder(employeeView);
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+        // Get the data model based on position
+        Employee employee = employees.get(i);
 
+        // Set item views based on your views and data model
+        viewHolder.idTextView.setText(employee.getEmployeeID());
+        TextView textView = viewHolder.nameTextView;
+        textView.setText(String.format("%s %s", employee.getFirstName(), employee.getLastName()));
+        Button button = viewHolder.viewButton;
+        button.setText("View Details");
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return employees.size();
     }
 
     // Provide a direct reference to each of the views within a data item

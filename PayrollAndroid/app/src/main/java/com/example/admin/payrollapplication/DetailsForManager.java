@@ -57,13 +57,23 @@ public class DetailsForManager extends AppCompatActivity {
         // in content do not change the layout size of the RecyclerView
         recyclerView.setHasFixedSize(true);
 
+        // TODO: CHANGE THIS LIST TO THE LIST FROM FIREBASE TO GET THE ACTUAL DATA
+        List<Employee> employees = new ArrayList<>();
+
+        for(int i = 0; i < 10; i++) {
+            Employee employee = new Employee();
+            employee.setEmployeeID(String.valueOf(i + 1));
+            employee.setFirstName(String.valueOf((char)(65 + i + 1)));
+            employee.setLastName(String.valueOf((char)(65 + i + 1)));
+            employees.add(employee);
+        }
+
+        // specify an adapter (see also next example)
+        mAdapter = new EmployeesAdapter(employees);
+        recyclerView.setAdapter(mAdapter);
+
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
-        // specify an adapter (see also next example)
-        mAdapter = new EmployeesAdapter();
-        recyclerView.setAdapter(mAdapter);
-
     }
 }
