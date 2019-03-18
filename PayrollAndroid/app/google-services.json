@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "899662307913-rvuopsj7g0f4puqk42ut9rftsb69fcmg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.admin.payrollapplication",
+            "certificate_hash": "d86cdc5489b69163fd4069dabd96827c9118c172"
+          }
+        },
+        {
           "client_id": "899662307913-o0brgf0a7i0e35803nh6jp1i9e54904q.apps.googleusercontent.com",
           "client_type": 3
         }

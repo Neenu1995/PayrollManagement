@@ -1,6 +1,7 @@
 package com.example.admin.payrollapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesAdapter.View
 
     public EmployeesAdapter(List<Employee> employees) {
         this.employees = employees;
+
     }
 
     @NonNull
@@ -33,7 +35,7 @@ public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         // Get the data model based on position
-        Employee employee = employees.get(i);
+        final Employee employee = employees.get(i);
 
         // Set item views based on your views and data model
         viewHolder.idTextView.setText(employee.getEmployeeID());
@@ -41,6 +43,16 @@ public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesAdapter.View
         textView.setText(String.format("%s %s", employee.getFirstName(), employee.getLastName()));
         Button button = viewHolder.viewButton;
         button.setText("View Details");
+
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                // Start NewActivity.class
+                Intent myIntent = new Intent(DetailsForManager.ctxt,
+                        ManagerViewDetailsActivity.class);
+                myIntent.putExtra("employeeID",employee.getEmployeeID());
+                DetailsForManager.ctxt.startActivity(myIntent);
+            }
+        });
     }
 
     @Override

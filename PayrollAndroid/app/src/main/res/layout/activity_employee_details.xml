@@ -84,7 +84,6 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:padding="20dp"
-                android:text="Address"
                 tools:text="@string/emptxtAddress" />
         </LinearLayout>
 
