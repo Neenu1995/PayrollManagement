@@ -37,20 +37,25 @@ public class DetailsForManager extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ctxt = DetailsForManager.this;
         setContentView(R.layout.activity_details_for_manager);
-        recyclerView = findViewById(R.id.employee_list);
+        recyclerView = (RecyclerView) findViewById(R.id.employee_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(DetailsForManager.this));
         //itemlist = new ArrayList<>();
-        mRootRef = FirebaseDatabase.getInstance().getReference("Employee");
+        mRootRef = FirebaseDatabase.getInstance().getReference("employee");
 
         mRootRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     Employee emp = ds.getValue(Employee.class);
-                    emp.setEmployeeID(emp.getEmployeeID());
-                    emp.setFirstName(emp.getFirstName());
-                    emp.setLastName(emp.getLastName());
+//                    emp.setEmployeeID(emp.getEmployeeID());
+//                    emp.setFirstName(emp.getFirstName());
+//                    emp.setLastName(emp.getLastName());
+//                    employees.add(emp);
                     employees.add(emp);
                 }
+                mAdapter = new EmployeesAdapter(DetailsForManager.this,employees);
+                recyclerView.setAdapter(mAdapter);
+
             }
 
             @Override
@@ -73,12 +78,12 @@ public class DetailsForManager extends AppCompatActivity {
             employees.add(employee);
         }*/
 
-        // specify an adapter (see also next example)
-        mAdapter = new EmployeesAdapter(employees);
-        recyclerView.setAdapter(mAdapter);
+//        // specify an adapter (see also next example)
+//        mAdapter = new EmployeesAdapter(employees);
+//        recyclerView.setAdapter(mAdapter);
 
-        // use a linear layout manager
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+//        // use a linear layout manager
+//        layoutManager = new LinearLayoutManager(this);
+//        recyclerView.setLayoutManager(layoutManager);
     }
 }
