@@ -55,6 +55,7 @@ public class DetailsForManager extends AppCompatActivity {
                 }
                 mAdapter = new EmployeesAdapter(DetailsForManager.this,employees);
                 recyclerView.setAdapter(mAdapter);
+                mRootRef.removeEventListener(this);
 
             }
 

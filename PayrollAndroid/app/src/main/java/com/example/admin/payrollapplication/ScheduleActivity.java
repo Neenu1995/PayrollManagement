@@ -9,9 +9,13 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +30,7 @@ public class ScheduleActivity extends AppCompatActivity {
     String date;
     Button confirmButton;
     Map<String, String> schedule;
+    private String employeeEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,15 +54,34 @@ public class ScheduleActivity extends AppCompatActivity {
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String employeeEmail = idText.getText().toString();
-                if(shiftView.getText()=="Start of Shift"){
-//                    intent.putExtra("start",date);
+                employeeEmail = idText.getText().toString();
+                if(shiftView.getText().equals("Start of Shift")){
                     schedule.put("start",date);
-                    shiftView.setText(R.string.end_shift);
+                    shiftView.setText("End of Shift");
                 } else{
-//                    intent.putExtra("end",date);
                     schedule.put("end",date);
-                    reference.orderByChild("email").equalTo(employeeEmail).getRef().child("schedule").setValue(schedule);
+                    reference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot ds : dataSnapshot.getChildren()){
+                                Employee temp = ds.getValue(Employee.class);
+
+                                if(temp.getEmail().equals(employeeEmail)){
+                                    ds.child("schedule").getRef().setValue(schedule);
+                                    reference.removeEventListener(this);
+                                    Intent intent = new Intent(ScheduleActivity.this,MainActivity.class);
+                                    startActivity(intent);
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            Toast.makeText(ScheduleActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+//                    reference.child(key).child("schedule").setValue(schedule);
+//                    Toast.makeText(ScheduleActivity.this, eh, Toast.LENGTH_SHORT).show();
                 }
             }
         });
