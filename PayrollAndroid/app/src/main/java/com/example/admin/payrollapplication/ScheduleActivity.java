@@ -26,10 +26,13 @@ public class ScheduleActivity extends AppCompatActivity {
     CalendarView calendarView;
     TextView shiftView;
     EditText idText;
+    EditText timeText;
     Intent intent;
     String date;
     Button confirmButton;
     Map<String, String> schedule;
+    Map<String, String> start;
+    Map<String, String> end;
     private String employeeEmail;
 
     @Override
@@ -40,8 +43,11 @@ public class ScheduleActivity extends AppCompatActivity {
         calendarView = (CalendarView) findViewById(R.id.calendarView);
         shiftView = (TextView) findViewById(R.id.shiftText);
         idText = (EditText) findViewById(R.id.idTxt);
+        timeText = (EditText) findViewById(R.id.timeTxt);
         confirmButton = (Button) findViewById(R.id.confirmBtn);
         schedule = new HashMap<>();
+        start = new HashMap<>();
+        end = new HashMap<>();
         reference = FirebaseDatabase.getInstance().getReference("employee");
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -55,11 +61,16 @@ public class ScheduleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 employeeEmail = idText.getText().toString();
+                String time = timeText.getText().toString();
                 if(shiftView.getText().equals("Start of Shift")){
                     schedule.put("start",date);
+                    start.put("date",date);
+                    start.put("time",time);
                     shiftView.setText("End of Shift");
                 } else{
                     schedule.put("end",date);
+                    end.put("date",date);
+                    end.put("time",time);
                     reference.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -67,7 +78,9 @@ public class ScheduleActivity extends AppCompatActivity {
                                 Employee temp = ds.getValue(Employee.class);
 
                                 if(temp.getEmail().equals(employeeEmail)){
-                                    ds.child("schedule").getRef().setValue(schedule);
+//                                    ds.child("schedule").getRef().setValue(schedule);
+                                    ds.child("schedule").child("start").getRef().setValue(start);
+                                    ds.child("schedule").child("end").getRef().setValue(end);
                                     reference.removeEventListener(this);
                                     Intent intent = new Intent(ScheduleActivity.this,MainActivity.class);
                                     startActivity(intent);
