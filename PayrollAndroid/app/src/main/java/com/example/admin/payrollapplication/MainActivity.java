@@ -3,6 +3,7 @@ package com.example.admin.payrollapplication;
 import android.content.Intent;
 
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,6 +14,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,7 +26,8 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-
+    private FirebaseAuth auth;
+    private FirebaseAuth.AuthStateListener authListener;
     Button empButton;
     Button deptButton;
     Button registerButton;
@@ -39,6 +43,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         myRef = FirebaseDatabase.getInstance().getReference("person");
 
+        //get firebase auth instance
+        auth = FirebaseAuth.getInstance();
+
+        //get current user
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        authListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user == null) {
+                    // user auth state is changed - user is null
+                    // launch login activity
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                    finish();
+                }
+            }
+        };
+
         empButton = findViewById(R.id.empButton);
 
         empButton.setOnClickListener(new View.OnClickListener() {
@@ -46,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 // Start NewActivity.class
                 Intent myIntent = new Intent(MainActivity.this,
                         DetailsForEmployeeActivity.class);
+                myIntent.putExtra("currentUser",user);
                 startActivity(myIntent);
             }
         });
