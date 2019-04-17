@@ -111,13 +111,11 @@ public class RegistrationActivity extends AppCompatActivity {
 
         String title = titleText.getText().toString().trim();
         if (!TextUtils.isEmpty(email)) {
-            String key = myRef.push().getKey();
+            String key = auth.getUid();
             String id = generateID(fname, lname);
             Employee emp = new Employee(id, fname, lname, password, address, phone, email, title);
             //myRef.setValue(id);
             myRef.child(key).setValue(emp);
-
-
         } else {
             Toast.makeText(this, "Enter email.", Toast.LENGTH_LONG).show();
         }

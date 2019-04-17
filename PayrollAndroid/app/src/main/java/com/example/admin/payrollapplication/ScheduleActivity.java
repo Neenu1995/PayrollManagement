@@ -53,7 +53,7 @@ public class ScheduleActivity extends AppCompatActivity {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                date = year + "/" + month + "/" + dayOfMonth;
+                date = year + "/" + (month + 1) + "/" + dayOfMonth;
             }
         });
 
@@ -71,7 +71,7 @@ public class ScheduleActivity extends AppCompatActivity {
                     schedule.put("end",date);
                     end.put("date",date);
                     end.put("time",time);
-                    reference.addValueEventListener(new ValueEventListener() {
+                    reference.orderByChild("email").equalTo(employeeEmail).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             for (DataSnapshot ds : dataSnapshot.getChildren()){

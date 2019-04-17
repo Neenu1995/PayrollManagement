@@ -29,18 +29,12 @@ public class DetailsForEmployeeActivity extends AppCompatActivity {
     public TextView emptxtPhone;
     public TextView emptxtEmail;
     public TextView emptxtTitle;
-    List<Employee> employees = new ArrayList<>();
-    private FirebaseAuth auth;
-    private FirebaseAuth.AuthStateListener authListener;
     DatabaseReference databaseReference;
-    Query query;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_details);
-        //Get current signed in user's email
-        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
         emptxtFname = (TextView) findViewById(R.id.emptxtFname);
         emptxtLname = (TextView) findViewById(R.id.emptxtLname);
@@ -50,16 +44,13 @@ public class DetailsForEmployeeActivity extends AppCompatActivity {
         emptxtEmail = (TextView) findViewById(R.id.emptxtEmail);
         emptxtTitle = (TextView) findViewById(R.id.emptxtTitle);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("employee");
-        query = databaseReference.orderByChild("email").equalTo(email);
+        String uid = FirebaseAuth.getInstance().getUid(); //Get ID from Authentication
+        databaseReference = FirebaseDatabase.getInstance().getReference("employee").child(uid);
 
-        query.addValueEventListener(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Employee emp = new Employee();
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    emp = ds.getValue(Employee.class);
-                }
+                Employee emp = dataSnapshot.getValue(Employee.class);
 
                 emptxtFname.setText(emp.getFirstName());
                 emptxtLname.setText(emp.getLastName());
@@ -72,7 +63,9 @@ public class DetailsForEmployeeActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(DetailsForEmployeeActivity.this, "Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                String msg = "Error: \nMessage: " + databaseError.getMessage()
+                        + "\n Details: " + databaseError.getDetails();
+                Toast.makeText(DetailsForEmployeeActivity.this, msg, Toast.LENGTH_SHORT).show();
             }
         });
     }
