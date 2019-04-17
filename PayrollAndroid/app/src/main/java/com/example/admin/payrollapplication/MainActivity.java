@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     Button registerButton;
     Button emailBtn;
     Button schedBtn;
+    Button calculateBtn;
     // Write a message to the database
     DatabaseReference myRef ;
 
@@ -97,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+
         emailBtn = (Button) findViewById(R.id.sendEmail);
         emailBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -111,6 +113,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,
                         ScheduleActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        calculateBtn = (Button) findViewById(R.id.calculateButton);
+
+        calculateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,
+                        CalculatePayActivity.class);
                 startActivity(intent);
             }
         });
