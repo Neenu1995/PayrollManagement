@@ -13,56 +13,83 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:text="Name: "
-            />
-
-        <EditText
-            android:id="@+id/nameText"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/nullWidth"
             android:layout_height="wrap_content"
             android:padding="20dp"
             android:layout_weight="1"
+            android:text="Email: "
+            />
+
+        <EditText
+            android:id="@+id/emailText"
+            android:layout_width="@dimen/nullWidth"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_weight="2"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:text="Email" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/nullWidth"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:padding="20dp"
             android:text="Password : "
             />
 
         <EditText
             android:id="@+id/passwordText"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/nullWidth"
             android:layout_height="wrap_content"
             android:padding="20dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="password" />
     </LinearLayout>
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton android:id="@+id/radio_man"
+            android:layout_width="@dimen/nullWidth"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/elementPadding"
+            android:text="@string/Manager"
+            android:onClick="onRadioButtonClicked"/>
+        <RadioButton android:id="@+id/radio_emp"
+            android:layout_width="@dimen/nullWidth"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/elementPadding"
+            android:text="@string/Employee"
+            android:onClick="onRadioButtonClicked"/>
+    </RadioGroup>
 
     <Button
         android:id="@+id/submitButton"
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:text="Submit" />
+        android:layout_height="60dp"
+        android:background="@drawable/buttonshape"
+        android:padding="@dimen/elementPadding"
+        android:text="Login"
+        android:textColor="#000000"
+        android:textSize="19sp" />
 
     <TextView
         android:id="@+id/registerTextButton"
         android:autoLink="all"
         android:clickable="true"
         android:text="Register here"
+        android:textStyle="bold"
+        android:padding="@dimen/elementPadding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
