@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText passwordTextV;
     Button submitBtn;
     DatabaseReference myRef;
+    TextView registerTextV;
     FirebaseAuth myAuth;
 
     private static final String TAG = "LoginActivity";
@@ -38,18 +40,22 @@ public class LoginActivity extends AppCompatActivity {
         nameTextV = findViewById(R.id.nameText);
         passwordTextV = findViewById(R.id.passwordText);
         submitBtn = findViewById(R.id.submitButton);
+        registerTextV = findViewById(R.id.registerTextButton);
         myAuth = FirebaseAuth.getInstance();
 
 
-
+        registerTextV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(LoginActivity.this,
+                        RegistrationActivity  .class);
+                startActivity(myIntent);
+            }
+        });
         submitBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
              //checkCredentials();
                 signIn();
-
-//                Intent myIntent = new Intent(LoginActivity.this,
-//                        MainActivity.class);
-//                startActivity(myIntent);
 
             }
         });

@@ -58,5 +58,12 @@
         android:padding="20dp"
         android:text="Submit" />
 
+    <TextView
+        android:id="@+id/registerTextButton"
+        android:autoLink="all"
+        android:clickable="true"
+        android:text="Register here"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
