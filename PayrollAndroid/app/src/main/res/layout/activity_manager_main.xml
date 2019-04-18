@@ -55,6 +55,12 @@
         android:padding="20dp"
         android:text="View Employees" />
     <Button
+        android:id="@+id/editEmpButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="Edit Employee" />
+    <Button
         android:id="@+id/calculateButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

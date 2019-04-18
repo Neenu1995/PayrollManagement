@@ -19,6 +19,7 @@ public class ManagerMainActivity extends AppCompatActivity {
     Button scheduleButton;
     Button viewListButton;
     Button calculatePayButton;
+    Button editEmpButton;
     Context context = ManagerMainActivity.this;
 
     @Override
@@ -33,6 +34,7 @@ public class ManagerMainActivity extends AppCompatActivity {
         viewListButton = findViewById(R.id.viewEmpListButton);
         scheduleButton = findViewById(R.id.scheduleEmpButton);
         calculatePayButton = findViewById(R.id.calculateButton);
+        editEmpButton = findViewById(R.id.editEmpButton);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +67,15 @@ public class ManagerMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(context,
+                        DetailsForManager.class);
+                startActivity(myIntent);
+            }
+        });
+
+        editEmpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(context,
                         ManagerViewDetailsActivity.class);
                 startActivity(myIntent);
             }
@@ -74,7 +85,7 @@ public class ManagerMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(context,
-                        Schedule.class);
+                        ScheduleActivity.class);
                 startActivity(myIntent);
             }
         });
