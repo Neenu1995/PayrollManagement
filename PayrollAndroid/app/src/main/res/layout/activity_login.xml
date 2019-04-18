@@ -52,25 +52,7 @@
             android:inputType="textPersonName"
             android:text="password" />
     </LinearLayout>
-    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <RadioButton android:id="@+id/radio_man"
-            android:layout_width="@dimen/nullWidth"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="@dimen/elementPadding"
-            android:text="@string/Manager"
-            android:onClick="onRadioButtonClicked"/>
-        <RadioButton android:id="@+id/radio_emp"
-            android:layout_width="@dimen/nullWidth"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="@dimen/elementPadding"
-            android:text="@string/Employee"
-            android:onClick="onRadioButtonClicked"/>
-    </RadioGroup>
+
 
     <Button
         android:id="@+id/submitButton"

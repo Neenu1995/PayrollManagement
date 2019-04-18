@@ -3,7 +3,6 @@ package com.example.admin.payrollapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,102 +10,87 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 public class ManagerMainActivity extends AppCompatActivity {
 
-
-    private static final String TAG = "MainActivity";
-    private FirebaseAuth auth;
-    private FirebaseAuth.AuthStateListener authListener;
-    Context context = ManagerMainActivity.this;
-    Button empButton;
-    Button deptButton;
     Button registerButton;
-    Button emailBtn;
-    Button schedBtn;
-    // Write a message to the database
-    DatabaseReference myRef ;
+    Button emailButton;
+    Button viewEmpButton;
+    Button viewScheduleButton;
+    Button scheduleButton;
+    Button viewListButton;
+    Button calculatePayButton;
+    Context context = ManagerMainActivity.this;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_main);
 
-        setContentView(R.layout.activity_main);
-        myRef = FirebaseDatabase.getInstance().getReference("person");
-
-        //get firebase auth instance
-        auth = FirebaseAuth.getInstance();
-
-        //get current user
-        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        authListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user == null) {
-                    // user auth state is changed - user is null
-                    // launch login activity
-                    startActivity(new Intent(context, LoginActivity.class));
-                    finish();
-                }
-            }
-        };
-
-        empButton = findViewById(R.id.empButton);
-
-        empButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View arg0) {
-                // Start NewActivity.class
-                Intent myIntent = new Intent(context,
-                        DetailsForEmployeeActivity.class);
-                myIntent.putExtra("currentUser",user);
-                startActivity(myIntent);
-            }
-        });
-
-        deptButton = findViewById(R.id.deptButton);
-
-        deptButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View arg0) {
-
-                // Start NewActivity.class
-                Intent myIntent = new Intent(context,
-                        DetailsForManager  .class);
-                startActivity(myIntent);
-            }
-        });
-
         registerButton = findViewById(R.id.registerButton);
+        emailButton = findViewById(R.id.sendEmailButton);
+        viewEmpButton = findViewById(R.id.empButton);
+        viewScheduleButton = findViewById(R.id.scheduleButton);
+        viewListButton = findViewById(R.id.viewEmpListButton);
+        scheduleButton = findViewById(R.id.scheduleEmpButton);
+        calculatePayButton = findViewById(R.id.calculateButton);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View arg0) {
-
-                // Start NewActivity.class
+            @Override
+            public void onClick(View v) {
                 Intent myIntent = new Intent(context,
-                        RegistrationActivity  .class);
+                        RegistrationActivity.class);
                 startActivity(myIntent);
             }
         });
-        emailBtn = (Button) findViewById(R.id.sendEmail);
-        emailBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                sendEmail();
+
+        viewEmpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(context,
+                        DetailsForEmployeeActivity.class);
+                startActivity(myIntent);
             }
         });
 
-        schedBtn = (Button) findViewById(R.id.scheduleButton);
-
-        schedBtn.setOnClickListener(new View.OnClickListener() {
+        viewScheduleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context,
-                        ScheduleActivity.class);
-                startActivity(intent);
+                Intent myIntent = new Intent(context,
+                        ViewScheduleActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
+        viewListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(context,
+                        ManagerViewDetailsActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
+        scheduleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(context,
+                        Schedule.class);
+                startActivity(myIntent);
+            }
+        });
+
+        calculatePayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(context,
+                        CalculatePayActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
+        emailButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                sendEmail();
             }
         });
     }
@@ -132,5 +116,4 @@ public class ManagerMainActivity extends AppCompatActivity {
             Toast.makeText(context, "There is no email client installed.", Toast.LENGTH_SHORT).show();
         }
     }
-
 }

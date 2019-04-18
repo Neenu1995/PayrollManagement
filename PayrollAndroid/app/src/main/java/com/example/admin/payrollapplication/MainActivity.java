@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_main);
-        myRef = FirebaseDatabase.getInstance().getReference("person");
+        myRef = FirebaseDatabase.getInstance().getReference("employee");
 
         //get firebase auth instance
         auth = FirebaseAuth.getInstance();
