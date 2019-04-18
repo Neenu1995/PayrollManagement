@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText emailTextV;
     EditText passwordTextV;
     Button submitBtn;
-    Boolean radioUser ;
+    Boolean radioUser;
     DatabaseReference myRef;
     TextView registerTextV;
     FirebaseAuth myAuth;
@@ -53,13 +53,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(LoginActivity.this,
-                        RegistrationActivity  .class);
+                        RegistrationActivity.class);
                 startActivity(myIntent);
             }
         });
         submitBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-             //checkCredentials();
+                //checkCredentials();
                 signIn();
 
             }
@@ -73,77 +73,44 @@ public class LoginActivity extends AppCompatActivity {
         boolean checked = ((RadioButton) view).isChecked();
 
         // Check which radio button was clicked
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.radio_man:
                 if (checked)
                     radioUser = true;//Manager
-                    break;
+                break;
             case R.id.radio_emp:
                 if (checked)
                     radioUser = false;//Employee
-                    break;
+                break;
         }
     }
 
-    private void signIn(){
+    private void signIn() {
         String email = emailTextV.getText().toString().trim();
         String password = passwordTextV.getText().toString().trim();
 
-        myAuth.signInWithEmailAndPassword(email,password)
+        myAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    FirebaseUser user = myAuth.getCurrentUser();
-                   if(radioUser) {
-                       Toast.makeText(LoginActivity.this, "Manager Sign In Successful", Toast.LENGTH_LONG).show();
-                       Intent myIntent = new Intent(LoginActivity.this,
-                               MainActivity.class);
-                       startActivity(myIntent);
-                   }
-                   else{
-                       Toast.makeText(LoginActivity.this, "Employee Sign In Successful", Toast.LENGTH_LONG).show();
-                       Intent myIntent = new Intent(LoginActivity.this,
-                               MainActivity.class);
-                       startActivity(myIntent);
-                   }
-                } else {
-                    Toast.makeText(LoginActivity.this,"Sign In Failed",Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = myAuth.getCurrentUser();
+                            if (radioUser) {
+                                Toast.makeText(LoginActivity.this, "Manager Sign In Successful", Toast.LENGTH_LONG).show();
+                                Intent myIntent = new Intent(LoginActivity.this,
+                                        ManagerMainActivity.class);
+                                startActivity(myIntent);
+                            } else {
+                                Toast.makeText(LoginActivity.this, "Employee Sign In Successful", Toast.LENGTH_LONG).show();
+                                Intent myIntent = new Intent(LoginActivity.this,
+                                        MainActivity.class);
+                                startActivity(myIntent);
+                            }
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Sign In Failed", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
     }
 
-    private void checkCredentials(String userID) {
-        final String currentUserID = userID;
-        Employee emp = new Employee();
-        DatabaseReference myCurrentRef = FirebaseDatabase.getInstance().getReference().child("Employee").child(currentUserID);
-        myCurrentRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String userType = dataSnapshot.child("Title").getValue().toString();
-                if (userType.equals("Manager")) {
-                    Toast.makeText(LoginActivity.this,"Manager Sign In Successfull",Toast.LENGTH_LONG).show();
-                    Intent myIntent = new Intent(LoginActivity.this,
-                            MainActivity.class);
-                    startActivity(myIntent);
-                }
-                else {
-                    Toast.makeText(LoginActivity.this,"Employee Sign In Successfull",Toast.LENGTH_LONG).show();
-                    Intent myIntent = new Intent(LoginActivity.this,
-                            MainActivity.class);
-                    startActivity(myIntent);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
-            }
-
-        });
-
-
-    }
 }
