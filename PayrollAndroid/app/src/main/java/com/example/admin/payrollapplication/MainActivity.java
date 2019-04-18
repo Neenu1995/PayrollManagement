@@ -74,27 +74,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        deptButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View arg0) {
-
-                // Start NewActivity.class
-                Intent myIntent = new Intent(MainActivity.this,
-                        DetailsForManager  .class);
-                startActivity(myIntent);
-            }
-        });
-
-        registerButton = findViewById(R.id.registerButton);
-
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View arg0) {
-
-                // Start NewActivity.class
-                Intent myIntent = new Intent(MainActivity.this,
-                        RegistrationActivity  .class);
-                startActivity(myIntent);
-            }
-        });
 
         emailBtn = (Button) findViewById(R.id.sendEmail);
         emailBtn.setOnClickListener(new View.OnClickListener() {

@@ -37,25 +37,27 @@ public class CalculatePayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calculate_pay);
 
         eGrossPay = (EditText)findViewById(R.id.txtGrossPay);
-        txtgrossPay = Double.valueOf(eGrossPay.getText().toString());
         eRegHrs = (EditText)findViewById(R.id.txtRegHrs);
-        regHrs = Double.valueOf(eRegHrs.getText().toString());
         eOvtHrs = (EditText)findViewById(R.id.txtOvtHrs);
-        ovtHrs = Double.valueOf(eOvtHrs.getText().toString());
         ePayPerHr = (EditText)findViewById(R.id.txtPayPerHr);
-        payPerHr = Double.valueOf(ePayPerHr.getText().toString());
         eCpp = (EditText)findViewById(R.id.txtCPP);
-        cpp = Double.valueOf(eCpp.getText().toString());
         eEmpInsurance = (EditText)findViewById(R.id.txtEmpInsurance);
-        empInsurance = Double.valueOf(eEmpInsurance.getText().toString());
         txtviewPay = (TextView)findViewById(R.id.txtviewPay);
         txtviewDed = (TextView)findViewById(R.id.txtviewOverallDed);
 
         btnPay = (Button) findViewById(R.id.btnCalculatePay);
 
+
+
         btnPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                txtgrossPay = Double.valueOf(eGrossPay.getText().toString());
+                regHrs = Double.valueOf(eRegHrs.getText().toString());
+                ovtHrs = Double.valueOf(eOvtHrs.getText().toString());
+                payPerHr = Double.valueOf(ePayPerHr.getText().toString());
+                cpp = Double.valueOf(eCpp.getText().toString());
+                empInsurance = Double.valueOf(eEmpInsurance.getText().toString());
                 totalHrs = regHrs + ovtHrs;
                 grossPay = payPerHr * totalHrs;
                 totalDeduction = empInsurance + cpp;
@@ -66,8 +68,7 @@ public class CalculatePayActivity extends AppCompatActivity {
             }
         });
 
-        startActivity(new Intent(CalculatePayActivity.this, MainActivity.class));
-        finish();
+
     }
 
     private double calculatePay(){
