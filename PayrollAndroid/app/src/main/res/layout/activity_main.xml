@@ -19,7 +19,7 @@
         android:id="@+id/sendEmail"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Send notification" />
+        android:text="Send email" />
 
     <Button
         android:id="@+id/empButton"
@@ -28,24 +28,12 @@
         android:padding="20dp"
         android:text="View Profile" />
 
-    <Button
-        android:id="@+id/deptButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:text="View Employee Details " />
 
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:text="Registration" />
 
     <Button
         android:id="@+id/scheduleButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:text="Schedule" />
+        android:text="View Schedule" />
 </LinearLayout>
