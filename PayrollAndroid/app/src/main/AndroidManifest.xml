@@ -13,6 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ViewScheduleActivity"></activity>
         <activity android:name=".ManagerMainActivity" />
+        <activity android:name=".CalculatePayActivity"></activity>
         <activity android:name=".ManagerViewDetailsActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>

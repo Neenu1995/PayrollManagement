@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     Button empButton;
     Button emailBtn;
     Button schedBtn;
+    Button calculateBtn;
     // Write a message to the database
     DatabaseReference myRef ;
 
@@ -73,6 +74,28 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        deptButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+
+                // Start NewActivity.class
+                Intent myIntent = new Intent(MainActivity.this,
+                        DetailsForManager  .class);
+                startActivity(myIntent);
+            }
+        });
+
+        registerButton = findViewById(R.id.registerButton);
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+
+                // Start NewActivity.class
+                Intent myIntent = new Intent(MainActivity.this,
+                        RegistrationActivity  .class);
+                startActivity(myIntent);
+            }
+        });
+
         emailBtn = (Button) findViewById(R.id.sendEmail);
         emailBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -87,6 +110,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,
                         ViewScheduleActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        calculateBtn = (Button) findViewById(R.id.calculateButton);
+
+        calculateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,
+                        CalculatePayActivity.class);
                 startActivity(intent);
             }
         });
