@@ -25,6 +25,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="20dp"
+            android:text="Employee ID:" />
+
+        <EditText
+            android:id="@+id/txtEmpId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:padding="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
             android:text="Gross pay:" />
 
         <EditText
@@ -158,6 +178,24 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Overall Deductions:" />
+
+        <TextView
+            android:id="@+id/txtviewOverallDed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/btnCalculatePay"
             android:layout_width="wrap_content"
@@ -178,6 +216,7 @@
             android:text="Net Pay: " />
 
         <TextView
+            android:id="@+id/txtviewPay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="20dp" />
