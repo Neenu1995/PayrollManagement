@@ -85,7 +85,7 @@ public class ManagerMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(context,
-                        ScheduleActivity.class);
+                        SchedulingActivity.class);
                 startActivity(myIntent);
             }
         });

@@ -26,7 +26,7 @@
         <activity android:name=".DetailsForEmployeeActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".ScheduleActivity" />
+        <activity android:name=".SchedulingActivity" />
     </application>
 
 </manifest>
