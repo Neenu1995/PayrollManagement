@@ -10,6 +10,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+/**
+ *ManagerMainActivity displays all the actions that can be performed by a Manager User
+ *
+ * @author  Team6 COMP 313-001
+ * @version 1.0
+ * @since   10/4/2019
+ */
 public class ManagerMainActivity extends AppCompatActivity {
 
     Button registerButton;
@@ -19,7 +26,6 @@ public class ManagerMainActivity extends AppCompatActivity {
     Button scheduleButton;
     Button viewListButton;
     Button calculatePayButton;
-    Button editEmpButton;
     Context context = ManagerMainActivity.this;
 
     @Override
@@ -34,7 +40,6 @@ public class ManagerMainActivity extends AppCompatActivity {
         viewListButton = findViewById(R.id.viewEmpListButton);
         scheduleButton = findViewById(R.id.scheduleEmpButton);
         calculatePayButton = findViewById(R.id.calculateButton);
-        editEmpButton = findViewById(R.id.editEmpButton);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,15 +77,6 @@ public class ManagerMainActivity extends AppCompatActivity {
             }
         });
 
-        editEmpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(context,
-                        ManagerViewDetailsActivity.class);
-                startActivity(myIntent);
-            }
-        });
-
         scheduleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,6 +102,9 @@ public class ManagerMainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     *This method uses third party applications to send emails between the users.
+     */
     protected void sendEmail() {
         Log.i("Send email", "");
         String[] TO = {""};

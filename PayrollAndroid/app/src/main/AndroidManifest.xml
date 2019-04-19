@@ -14,7 +14,6 @@
         <activity android:name=".ManagerMainActivity"></activity>
         <activity android:name=".ViewScheduleActivity" />
         <activity android:name=".CalculatePayActivity" />
-        <activity android:name=".ManagerViewDetailsActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

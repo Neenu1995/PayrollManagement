@@ -21,6 +21,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ *LoginActivity displays the login page where users can login and register
+ *
+ * @author  Team6 COMP 313-001
+ * @version 1.0
+ * @since   10/4/2019
+ */
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     Context context = LoginActivity.this;
@@ -57,7 +64,6 @@ public class LoginActivity extends AppCompatActivity {
         });
         submitBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-                //checkCredentials();
                 signIn();
 
             }
@@ -66,6 +72,9 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     */
     private void signIn() {
         String email = emailTextV.getText().toString().trim();
         String password = passwordTextV.getText().toString().trim();
@@ -118,6 +127,4 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
-
-
 }

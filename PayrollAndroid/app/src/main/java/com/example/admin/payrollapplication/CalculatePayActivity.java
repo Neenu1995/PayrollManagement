@@ -1,9 +1,9 @@
 package com.example.admin.payrollapplication;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +16,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ *CalculatePayActivity is used to calculate the net pay of an employee
+ * for a given time period
+ *
+ * @author  Team6 COMP 313-001
+ * @version 1.0
+ * @since   10/4/2019
+ */
 public class CalculatePayActivity extends AppCompatActivity {
     DatabaseReference reference;
     Button btnPay;
@@ -26,7 +34,6 @@ public class CalculatePayActivity extends AppCompatActivity {
     EditText ePayPerHr;
     EditText eOvtHrs;
     EditText eRegHrs;
-    EditText eGrossPay;
     EditText empId;
     double incomeTax;
     double txtgrossPay;
@@ -37,7 +44,6 @@ public class CalculatePayActivity extends AppCompatActivity {
     double empInsurance;
     double netPay;
     double overallDed;
-    double totalHrs;
     double grossPay;
     double totalDeduction;
     String employeeId;
@@ -49,7 +55,6 @@ public class CalculatePayActivity extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference("employee");
 
         empId = (EditText)findViewById(R.id.txtEmpId);
-        eGrossPay = (EditText)findViewById(R.id.txtGrossPay);
         eRegHrs = (EditText)findViewById(R.id.txtRegHrs);
         eOvtHrs = (EditText)findViewById(R.id.txtOvtHrs);
         ePayPerHr = (EditText)findViewById(R.id.txtPayPerHr);
@@ -64,14 +69,13 @@ public class CalculatePayActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 employeeId = empId.getText().toString();
-                txtgrossPay = Double.valueOf(eGrossPay.getText().toString());
                 regHrs = Double.valueOf(eRegHrs.getText().toString());
                 ovtHrs = Double.valueOf(eOvtHrs.getText().toString());
                 payPerHr = Double.valueOf(ePayPerHr.getText().toString());
                 cpp = Double.valueOf(eCpp.getText().toString());
                 empInsurance = Double.valueOf(eEmpInsurance.getText().toString());
-                totalHrs = regHrs + ovtHrs;
-                grossPay = payPerHr * totalHrs;
+
+                grossPay = payPerHr * regHrs + payPerHr*ovtHrs*1.5;
                 totalDeduction = empInsurance + cpp;
 
                 calculatePay();
@@ -85,11 +89,9 @@ public class CalculatePayActivity extends AppCompatActivity {
                             Employee temp = ds.getValue(Employee.class);
 
                             if(temp.getEmployeeID().equals(employeeId)){
-                                ds.child("hoursWorked").getRef().setValue(totalHrs);
-                                ds.child("pay").child("end").getRef().setValue(netPay);
+                                ds.child("hoursWorked").getRef().setValue(regHrs+ovtHrs);
+                                ds.child("pay").getRef().setValue(netPay);
                                 reference.removeEventListener(this);
-                                Intent intent = new Intent(CalculatePayActivity.this,MainActivity.class);
-                                startActivity(intent);
                             }
                         }
                     }
@@ -103,38 +105,42 @@ public class CalculatePayActivity extends AppCompatActivity {
         });
     }
 
-    private double calculatePay(){
+    /**
+     *
+     * @return
+     */
+    public double calculatePay(){
         if(grossPay > 0 && grossPay <= 47630){
             incomeTax = 0.15;
             overallDed = totalDeduction + (grossPay * incomeTax);
-            txtviewDed.setText(String.valueOf(grossPay * incomeTax));
+            txtviewDed.setText(String.valueOf(overallDed));
             netPay = grossPay - overallDed;
         }
         else if (grossPay > 47630 && grossPay <= 95259){
             incomeTax = 0.205;
             overallDed = totalDeduction + (grossPay * incomeTax);
-            txtviewDed.setText(String.valueOf(grossPay * incomeTax));
+            txtviewDed.setText(String.valueOf(overallDed));
             netPay = grossPay - overallDed;
             return netPay;
         }
         else if (grossPay > 95259 && grossPay <= 147667){
             incomeTax = 0.26;
             overallDed = totalDeduction + (grossPay * incomeTax);
-            txtviewDed.setText(String.valueOf(grossPay * incomeTax));
+            txtviewDed.setText(String.valueOf(overallDed));
             netPay = grossPay - overallDed;
             txtviewPay.setText(String.valueOf(netPay));
         }
         else if (grossPay > 147667 && grossPay <= 210371){
             incomeTax = 0.29;
             overallDed = totalDeduction + (grossPay * incomeTax);
-            txtviewDed.setText(String.valueOf(grossPay * incomeTax));
+            txtviewDed.setText(String.valueOf(overallDed));
             netPay = grossPay - overallDed;
             return netPay;
         }
         else if (grossPay > 210371){
             incomeTax = 0.33;
             overallDed = totalDeduction + (grossPay * incomeTax);
-            txtviewDed.setText(String.valueOf(grossPay * incomeTax));
+            txtviewDed.setText(String.valueOf(overallDed));
             netPay = grossPay - overallDed;
             return netPay;
         }

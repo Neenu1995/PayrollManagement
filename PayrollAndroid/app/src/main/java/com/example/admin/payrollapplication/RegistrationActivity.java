@@ -8,7 +8,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,7 +17,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ *RegistrationActivity displays registration page where new employees can be registered into the database
+ *
+ * @author  Team6 COMP 313-001
+ * @version 1.0
+ * @since   10/4/2019
+ */
 public class RegistrationActivity extends AppCompatActivity {
+    static Integer count = 0;
     EditText fnameText;
     EditText lnameText;
     EditText phoneText;
@@ -26,11 +33,7 @@ public class RegistrationActivity extends AppCompatActivity {
     EditText passwordText;
     EditText titleText;
     EditText addressText;
-    //ProgressBar progressBar;
     FirebaseAuth auth;
-
-    static Integer count = 0;
-
     Button submitBtn;
 
     // Write a message to the database
@@ -61,9 +64,10 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
-
+    /**
+     *
+     */
     private void signUp() {
-
         String password = passwordText.getText().toString().trim();
         String email = emailText.getText().toString().trim();
         if (TextUtils.isEmpty(email)) {
@@ -81,7 +85,6 @@ public class RegistrationActivity extends AppCompatActivity {
             return;
         }
 
-        //progressBar.setVisibility(View.VISIBLE);
         //create user
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
@@ -101,6 +104,9 @@ public class RegistrationActivity extends AppCompatActivity {
                 });
     }
 
+    /**
+     *
+     */
     private void addEmployee() {
         String fname = fnameText.getText().toString().trim();
         String lname = lnameText.getText().toString().trim();
@@ -119,10 +125,14 @@ public class RegistrationActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Enter email.", Toast.LENGTH_LONG).show();
         }
-
-
     }
 
+    /**
+     *
+     * @param firstName
+     * @param lastName
+     * @return
+     */
     private String generateID(String firstName, String lastName) {
         String res1 = firstName.substring(0, 3);
         String res3 = lastName.substring(0, 3);
@@ -133,6 +143,4 @@ public class RegistrationActivity extends AppCompatActivity {
         String finalResult = res4 + res5;
         return finalResult;
     }
-
-
 }

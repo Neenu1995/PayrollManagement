@@ -1,7 +1,11 @@
 package com.example.admin.payrollapplication;
 
 /**
+ *DetailsForManagerActivity displays the details of all the employees
  *
+ * @author  Team6 COMP 313-001
+ * @version 1.0
+ * @since   10/4/2019
  */
 public class Employee {
 
@@ -19,74 +23,146 @@ public class Employee {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEmail() {
         return Email;
     }
 
+    /**
+     *
+     * @param email
+     */
     public void setEmail(String email) {
         Email = email;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTitle() {
         return Title;
     }
 
+    /**
+     *
+     * @param title
+     */
     public void setTitle(String title) {
         Title = title;
     }
 
+    /**
+     *
+     * @return
+     */
     public Schedule getLatestSchedule() {
         return LatestSchedule;
     }
 
+    /**
+     *
+     * @param latestSchedule
+     */
     public void setLatestSchedule(Schedule latestSchedule) {
         LatestSchedule = latestSchedule;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEmployeeID() {
         return EmployeeID;
     }
 
+    /**
+     *
+     * @param employeeID
+     */
     public void setEmployeeID(String employeeID) {
         EmployeeID = employeeID;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getFirstName() {
         return FirstName;
     }
 
+    /**
+     *
+     * @param firstName
+     */
     public void setFirstName(String firstName) {
         FirstName = firstName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPassword() {
         return Password;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         Password = password;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLastName() {
         return LastName;
     }
 
+    /**
+     *
+     * @param lastName
+     */
     public void setLastName(String lastName) {
         LastName = lastName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAddress() {
         return Address;
     }
 
+    /**
+     *
+     * @param address
+     */
     public void setAddress(String address) {
         Address = address;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPhoneNumber() {
         return PhoneNumber;
     }
 
+    /**
+     *
+     * @param phoneNumber
+     */
     public void setPhoneNumber(String phoneNumber) {
         PhoneNumber = phoneNumber;
     }

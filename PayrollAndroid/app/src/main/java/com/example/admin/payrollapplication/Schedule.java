@@ -1,38 +1,44 @@
 package com.example.admin.payrollapplication;
 
-public class Schedule {
-    String date;
-    String time;
+import java.util.HashMap;
+import java.util.Map;
 
-    @Override
-    public String toString() {
-        return "Schedule{" +
-                "date='" + date + '\'' +
-                ", time='" + time + '\'' +
-                '}';
+/**
+ * Schedule Class stores the information of one Schedule information of the employee.
+ */
+public class Schedule {
+    Map<String, String> start = new HashMap<>();
+    Map<String, String> end= new HashMap<>();
+
+    public Schedule(Map<String, String> start, Map<String, String> end) {
+        this.start = start;
+        this.end = end;
     }
 
     public Schedule() {
     }
 
-    public String getDate() {
-        return date;
+    public Map<String, String> getStart() {
+        return start;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setStart(Map<String, String> start) {
+        this.start = start;
     }
 
-    public String getTime() {
-        return time;
+    public Map<String, String> getEnd() {
+        return end;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setEnd(Map<String, String> end) {
+        this.end = end;
     }
 
-    public Schedule(String date, String time) {
-        this.date = date;
-        this.time = time;
+    @Override
+    public String toString() {
+        return "Schedule{" +
+                "start=" + start.values() +
+                ", end=" + end.values() +
+                '}';
     }
 }
