@@ -16,11 +16,20 @@ public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesAdapter.View
     private List<Employee> employees;
     Context context;
 
+    /**
+     *
+     * @param employees
+     */
     public EmployeesAdapter(List<Employee> employees) {
         this.employees = employees;
 
     }
 
+    /**
+     *
+     * @param ctx
+     * @param employeeList
+     */
     public EmployeesAdapter(Context ctx, List<Employee> employeeList) {
         this.employees = employeeList;
         this.context = ctx;
@@ -44,22 +53,6 @@ public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesAdapter.View
         // Get the data model based on position
         final Employee employee = employees.get(i);
 
-//        // Set item views based on your views and data model
-//        viewHolder.idTextView.setText(employee.getEmployeeID());
-//        TextView textView = viewHolder.nameTextView;
-//        textView.setText(String.format("%s %s", employee.getFirstName(), employee.getLastName()));
-//        Button button = viewHolder.viewButton;
-//        button.setText("View Details");
-//
-//        button.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View arg0) {
-//                // Start NewActivity.class
-//                Intent myIntent = new Intent(DetailsForManager.ctxt,
-//                        ManagerViewDetailsActivity.class);
-//                myIntent.putExtra("employeeID",employee.getEmployeeID());
-//                DetailsForManager.ctxt.startActivity(myIntent);
-//            }
-//        });
         viewHolder.EmployeeIdView.setText(employee.getEmployeeID());
         viewHolder.FirstNameView.setText(employee.getFirstName());
         viewHolder.LastNameView.setText(employee.getLastName());
@@ -77,22 +70,7 @@ public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesAdapter.View
     // Provide a direct reference to each of the views within a data item
     // Used to cache the views within the item layout for fast access
     public class ViewHolder extends RecyclerView.ViewHolder {
-//        // Your holder should contain a member variable
-//        // for any view that will be set as you render a row
-//        public TextView idTextView;
-//        public TextView nameTextView;
-//        public Button viewButton;
-//
-//        // We also create a constructor that accepts the entire item row
-//        // and does the view lookups to find each subview
-//        public ViewHolder(View itemView) {
-//            // Stores the itemView in a public final member variable that can be used
-//            // to access the context from any ViewHolder instance.
-//            super(itemView);
-//
-//            idTextView = (TextView) itemView.findViewById(R.id.employee_id);
-//            nameTextView = (TextView) itemView.findViewById(R.id.employee_name);
-//            viewButton = (Button) itemView.findViewById(R.id.view_button);
+
         public TextView EmployeeIdView;
         public TextView FirstNameView;
         public TextView LastNameView;
@@ -101,6 +79,10 @@ public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesAdapter.View
         public TextView EmailView;
         public TextView TitleView;
 
+        /**
+         *
+         * @param itemView
+         */
         public ViewHolder(View itemView) {
 
             super(itemView);

@@ -94,7 +94,7 @@ public class CalculatePayActivity extends AppCompatActivity {
 
                             if(temp.getEmployeeID().equals(employeeId)){
                                 ds.child("hoursWorked").getRef().setValue(totalHrs);
-                                ds.child("pay").child("end").getRef().setValue(netPay);
+                                ds.child("pay").getRef().setValue(netPay);
                                 reference.removeEventListener(this);
                                 Intent intent = new Intent(CalculatePayActivity.this,MainActivity.class);
                                 startActivity(intent);
@@ -112,9 +112,10 @@ public class CalculatePayActivity extends AppCompatActivity {
     }
 
     /**
+     *
      * @return
      */
-    public  double calculatePay(){
+    private double calculatePay(){
         if(grossPay > 0 && grossPay <= 47630){
             incomeTax = 0.15;
             overallDed = totalDeduction + (grossPay * incomeTax);

@@ -73,7 +73,9 @@ public class LoginActivity extends AppCompatActivity {
     /**
      *
      */
-    public void signIn(String email,String password) {
+    private void signIn() {
+        String email = emailTextV.getText().toString().trim();
+        String password = passwordTextV.getText().toString().trim();
 
         myAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -123,6 +125,4 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
-
-
 }

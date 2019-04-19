@@ -105,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     *
+     */
     protected void sendEmail() {
         Log.i("Send email", "");
         String[] TO = {""};
@@ -127,6 +130,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     */
     private void readPerson(){
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
@@ -153,9 +159,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-
 }

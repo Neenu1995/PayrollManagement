@@ -32,7 +32,6 @@ public class DetailsForManager extends AppCompatActivity {
         setContentView(R.layout.activity_details_for_manager);
         recyclerView = (RecyclerView) findViewById(R.id.employee_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(DetailsForManager.this));
-        //itemlist = new ArrayList<>();
         mRootRef = FirebaseDatabase.getInstance().getReference("employee");
 
         mRootRef.addValueEventListener(new ValueEventListener() {
@@ -40,10 +39,6 @@ public class DetailsForManager extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     Employee emp = ds.getValue(Employee.class);
-//                    emp.setEmployeeID(emp.getEmployeeID());
-//                    emp.setFirstName(emp.getFirstName());
-//                    emp.setLastName(emp.getLastName());
-//                    employees.add(emp);
                     employees.add(emp);
                 }
                 mAdapter = new EmployeesAdapter(DetailsForManager.this,employees);
@@ -60,8 +55,5 @@ public class DetailsForManager extends AppCompatActivity {
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         recyclerView.setHasFixedSize(true);
-
-        // TODO: CHANGE THIS LIST TO THE LIST FROM FIREBASE TO GET THE ACTUAL DATA
-
     }
 }
