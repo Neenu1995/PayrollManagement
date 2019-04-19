@@ -92,8 +92,6 @@ public class CalculatePayActivity extends AppCompatActivity {
                                 ds.child("hoursWorked").getRef().setValue(regHrs+ovtHrs);
                                 ds.child("pay").getRef().setValue(netPay);
                                 reference.removeEventListener(this);
-                                Intent intent = new Intent(CalculatePayActivity.this,MainActivity.class);
-                                startActivity(intent);
                             }
                         }
                     }
@@ -115,34 +113,34 @@ public class CalculatePayActivity extends AppCompatActivity {
         if(grossPay > 0 && grossPay <= 47630){
             incomeTax = 0.15;
             overallDed = totalDeduction + (grossPay * incomeTax);
-            txtviewDed.setText(String.valueOf(grossPay * incomeTax));
+            txtviewDed.setText(String.valueOf(overallDed));
             netPay = grossPay - overallDed;
         }
         else if (grossPay > 47630 && grossPay <= 95259){
             incomeTax = 0.205;
             overallDed = totalDeduction + (grossPay * incomeTax);
-            txtviewDed.setText(String.valueOf(grossPay * incomeTax));
+            txtviewDed.setText(String.valueOf(overallDed));
             netPay = grossPay - overallDed;
             return netPay;
         }
         else if (grossPay > 95259 && grossPay <= 147667){
             incomeTax = 0.26;
             overallDed = totalDeduction + (grossPay * incomeTax);
-            txtviewDed.setText(String.valueOf(grossPay * incomeTax));
+            txtviewDed.setText(String.valueOf(overallDed));
             netPay = grossPay - overallDed;
             txtviewPay.setText(String.valueOf(netPay));
         }
         else if (grossPay > 147667 && grossPay <= 210371){
             incomeTax = 0.29;
             overallDed = totalDeduction + (grossPay * incomeTax);
-            txtviewDed.setText(String.valueOf(grossPay * incomeTax));
+            txtviewDed.setText(String.valueOf(overallDed));
             netPay = grossPay - overallDed;
             return netPay;
         }
         else if (grossPay > 210371){
             incomeTax = 0.33;
             overallDed = totalDeduction + (grossPay * incomeTax);
-            txtviewDed.setText(String.valueOf(grossPay * incomeTax));
+            txtviewDed.setText(String.valueOf(overallDed));
             netPay = grossPay - overallDed;
             return netPay;
         }
