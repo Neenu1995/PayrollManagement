@@ -89,8 +89,8 @@ public class CalculatePayActivity extends AppCompatActivity {
                             Employee temp = ds.getValue(Employee.class);
 
                             if(temp.getEmployeeID().equals(employeeId)){
-                                ds.child("hoursWorked").getRef().setValue(regHrs+ovtHrs);
-                                ds.child("pay").getRef().setValue(netPay);
+                                ds.child("hoursWorked").getRef().setValue(String.valueOf(regHrs+ovtHrs));
+                                ds.child("pay").getRef().setValue(String.valueOf(netPay));
                                 reference.removeEventListener(this);
                             }
                         }
