@@ -1,5 +1,7 @@
 package com.example.admin.payrollapplication;
 
+import java.util.HashMap;
+
 /**
  *DetailsForManagerActivity displays the details of all the employees
  *
@@ -17,7 +19,8 @@ public class Employee {
     private String PhoneNumber;
     private String Email;
     private String Title;
-    private Schedule LatestSchedule;
+    private HashMap<String,String> LatestSchedule;
+
 
     public Employee(){
 
@@ -55,21 +58,6 @@ public class Employee {
         Title = title;
     }
 
-    /**
-     *
-     * @return
-     */
-    public Schedule getLatestSchedule() {
-        return LatestSchedule;
-    }
-
-    /**
-     *
-     * @param latestSchedule
-     */
-    public void setLatestSchedule(Schedule latestSchedule) {
-        LatestSchedule = latestSchedule;
-    }
 
     /**
      *
@@ -159,6 +147,14 @@ public class Employee {
         return PhoneNumber;
     }
 
+    public HashMap<String, String> getLatestSchedule() {
+        return LatestSchedule;
+    }
+
+    public void setLatestSchedule(HashMap<String, String> latestSchedule) {
+        LatestSchedule = latestSchedule;
+    }
+
     /**
      *
      * @param phoneNumber
@@ -167,19 +163,7 @@ public class Employee {
         PhoneNumber = phoneNumber;
     }
 
-    /**
-     *
-     * @param employeeID
-     * @param firstName
-     * @param password
-     * @param lastName
-     * @param address
-     * @param phoneNumber
-     * @param email
-     * @param title
-     * @param latestSchedule
-     */
-    public Employee(String employeeID, String firstName, String password, String lastName, String address, String phoneNumber, String email, String title, Schedule latestSchedule) {
+    public Employee(String employeeID, String firstName, String password, String lastName, String address, String phoneNumber, String email, String title, HashMap<String, String> latestSchedule) {
         EmployeeID = employeeID;
         FirstName = firstName;
         Password = password;

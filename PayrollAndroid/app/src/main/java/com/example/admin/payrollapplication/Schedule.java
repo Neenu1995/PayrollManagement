@@ -5,40 +5,42 @@ import java.util.Map;
 
 /**
  * Schedule Class stores the information of one Schedule information of the employee.
+ *  * @author  Team6 COMP 313-001
+ *  * @version 1.0
+ *  * @since   10/4/2019
  */
 public class Schedule {
-    Map<String, String> start = new HashMap<>();
-    Map<String, String> end= new HashMap<>();
+    String start;
+    String end;
 
-    public Schedule(Map<String, String> start, Map<String, String> end) {
+       public Schedule() {
+    }
+
+    public Schedule(String start, String end) {
         this.start = start;
         this.end = end;
     }
 
-    public Schedule() {
-    }
-
-    public Map<String, String> getStart() {
+    public String getStart() {
         return start;
     }
 
-    public void setStart(Map<String, String> start) {
+    public void setStart(String start) {
         this.start = start;
     }
 
-    public Map<String, String> getEnd() {
+    public String getEnd() {
         return end;
     }
 
-    public void setEnd(Map<String, String> end) {
+    public void setEnd(String end) {
         this.end = end;
     }
 
     @Override
     public String toString() {
-        return "Schedule{" +
-                "start=" + start.values() +
-                ", end=" + end.values() +
-                '}';
+        return "start='" + start + '\'' +
+                ", end='" + end + '\'' ;
+
     }
 }

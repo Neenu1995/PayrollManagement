@@ -2,9 +2,9 @@ package com.example.admin.payrollapplication;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -25,7 +25,13 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ *SchedulingActivity enables manager users to Schedule employees
+ *
+ * @author  Team6 COMP 313-001
+ * @version 1.0
+ * @since   10/4/2019
+ */
 public class SchedulingActivity extends AppCompatActivity {
 
     EditText emailEditText;
@@ -89,9 +95,7 @@ public class SchedulingActivity extends AppCompatActivity {
         final DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-//                date = year + "-" + (month + 1) + "-" + dayOfMonth;
                 view.getDayOfMonth();
-//                date = dateToString(new GregorianCalendar(year, month, dayOfMonth), false);
                 lastYear = year;
                 lastMonth = month;
                 lastDay = dayOfMonth;
@@ -206,32 +210,20 @@ public class SchedulingActivity extends AppCompatActivity {
                         Toast.makeText(SchedulingActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                     }
                 });
-//                schedules = FirebaseDatabase.getInstance().getReference("schedules").child(uid);
-//                schedules.addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                        createSchedule2(dataSnapshot);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                    }
-//                });
             }
         });
     }
 
-     public void createSchedule(final DataSnapshot ds) {
+    public void createSchedule(final DataSnapshot ds) {
         final int n = numOfDays(gStartDate,gEndDate);
         final Calendar calendar = new GregorianCalendar(gStartDate.get(Calendar.YEAR),gStartDate.get(Calendar.MONTH),gStartDate.get(Calendar.DAY_OF_MONTH));
-         for(int i = 0; i < n; i++) {
-             String key = dateToString(calendar,false);
-             ds.child("schedule").child(key).child("time").getRef().setValue(startTime);
-             ds.child("schedule").child(key).child("duration").getRef().setValue(duration);
-             calendar.add(Calendar.DAY_OF_MONTH,1);
-         }
-     }
+        for(int i = 0; i < n; i++) {
+            String key = dateToString(calendar,false);
+            ds.child("schedule").child(key).child("start").getRef().setValue(startTime);
+            ds.child("schedule").child(key).child("end").getRef().setValue(duration);
+            calendar.add(Calendar.DAY_OF_MONTH,1);
+        }
+    }
 
     public boolean overlapCheck(String t, String d) {
         if(Double.parseDouble(t.substring(0,2))+

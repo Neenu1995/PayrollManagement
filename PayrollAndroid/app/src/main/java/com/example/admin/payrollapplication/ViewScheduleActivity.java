@@ -42,19 +42,26 @@ public class ViewScheduleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_schedule);
         scheduleText = findViewById(R.id.scheduleText);
         String uid = FirebaseAuth.getInstance().getUid(); //Get ID from Authentication
-        myRef = FirebaseDatabase.getInstance().getReference("employee").child(uid).child("schedule");
+        myRef = FirebaseDatabase.getInstance().getReference("employee").child(uid);
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Schedule emp = dataSnapshot.getValue(Schedule.class);
-                if(emp!=null){
+                String schedule = "";
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if (ds != null) {
+                        Employee emp = ds.getValue(Employee.class);
+                        String key = ds.getKey();
+                        schedule = "\n" + schedule + key;
+                        if (emp != null) {
+                            schedule = schedule + "\n\t" + emp.getLatestSchedule().values();
 
-                        scheduleText.setText(emp.toString());
-                }else{
-                    scheduleText.setText("You have no recent work history");
+                        } else {
+                            scheduleText.setText("You have no recent work history");
+                        }
+                    }
+                    scheduleText.setText(schedule);
                 }
-
             }
 
             @Override
