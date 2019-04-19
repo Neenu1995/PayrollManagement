@@ -61,9 +61,10 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
-
+    /**
+     *
+     */
     private void signUp() {
-
         String password = passwordText.getText().toString().trim();
         String email = emailText.getText().toString().trim();
         if (TextUtils.isEmpty(email)) {
@@ -81,7 +82,6 @@ public class RegistrationActivity extends AppCompatActivity {
             return;
         }
 
-        //progressBar.setVisibility(View.VISIBLE);
         //create user
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
@@ -101,6 +101,9 @@ public class RegistrationActivity extends AppCompatActivity {
                 });
     }
 
+    /**
+     *
+     */
     private void addEmployee() {
         String fname = fnameText.getText().toString().trim();
         String lname = lnameText.getText().toString().trim();
@@ -119,10 +122,14 @@ public class RegistrationActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Enter email.", Toast.LENGTH_LONG).show();
         }
-
-
     }
 
+    /**
+     *
+     * @param firstName
+     * @param lastName
+     * @return
+     */
     private String generateID(String firstName, String lastName) {
         String res1 = firstName.substring(0, 3);
         String res3 = lastName.substring(0, 3);
@@ -133,6 +140,4 @@ public class RegistrationActivity extends AppCompatActivity {
         String finalResult = res4 + res5;
         return finalResult;
     }
-
-
 }

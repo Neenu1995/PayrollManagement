@@ -66,6 +66,9 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     */
     private void signIn() {
         String email = emailTextV.getText().toString().trim();
         String password = passwordTextV.getText().toString().trim();
@@ -118,6 +121,4 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
-
-
 }

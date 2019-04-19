@@ -106,6 +106,9 @@ public class ManagerMainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     *
+     */
     protected void sendEmail() {
         Log.i("Send email", "");
         String[] TO = {""};

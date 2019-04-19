@@ -15,22 +15,43 @@ public class Schedule {
     public Schedule() {
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDate() {
         return date;
     }
 
+    /**
+     *
+     * @param date
+     */
     public void setDate(String date) {
         this.date = date;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTime() {
         return time;
     }
 
+    /**
+     *
+     * @param time
+     */
     public void setTime(String time) {
         this.time = time;
     }
 
+    /**
+     *
+     * @param date
+     * @param time
+     */
     public Schedule(String date, String time) {
         this.date = date;
         this.time = time;
