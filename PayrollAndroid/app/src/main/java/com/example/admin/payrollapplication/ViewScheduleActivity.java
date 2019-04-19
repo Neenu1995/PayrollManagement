@@ -15,7 +15,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 /**
  *ViewScheduleActivity displays the schedule details of the logged in employee
@@ -32,9 +34,6 @@ public class ViewScheduleActivity extends AppCompatActivity {
     DatabaseReference myRef ;
     TextView scheduleText;
 
-    Map<String, String> schedule;
-    Map<String, String> start;
-    Map<String, String> end;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -42,9 +41,6 @@ public class ViewScheduleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_schedule);
         scheduleText = findViewById(R.id.scheduleText);
-        schedule = new HashMap<>();
-        start = new HashMap<>();
-        end = new HashMap<>();
         String uid = FirebaseAuth.getInstance().getUid(); //Get ID from Authentication
         myRef = FirebaseDatabase.getInstance().getReference("employee").child(uid).child("schedule");
 
@@ -53,7 +49,8 @@ public class ViewScheduleActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Schedule emp = dataSnapshot.getValue(Schedule.class);
                 if(emp!=null){
-                    scheduleText.setText(emp.toString());
+
+                        scheduleText.setText(emp.toString());
                 }else{
                     scheduleText.setText("You have no recent work history");
                 }

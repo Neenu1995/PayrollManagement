@@ -1,13 +1,14 @@
 package com.example.admin.payrollapplication;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Schedule Class stores the information of one Schedule information of the employee.
  */
 public class Schedule {
-    Map<String, String> start;
-    Map<String, String> end;
+    Map<String, String> start = new HashMap<>();
+    Map<String, String> end= new HashMap<>();
 
     public Schedule(Map<String, String> start, Map<String, String> end) {
         this.start = start;
