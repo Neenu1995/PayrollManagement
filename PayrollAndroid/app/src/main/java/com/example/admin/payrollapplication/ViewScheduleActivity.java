@@ -50,17 +50,18 @@ public class ViewScheduleActivity extends AppCompatActivity {
                 String schedule = "";
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     if (ds != null) {
-                        Employee emp = ds.getValue(Employee.class);
+                       // Employee emp = ds.getValue(Employee.class);
                         String key = ds.getKey();
-                        schedule = "\n" + schedule + key;
-                        if (emp != null) {
+                        schedule =  schedule + ds.getValue();
+                        scheduleText.setText(schedule);
+                       /* if (emp != null) {
                             schedule = schedule + "\n\t" + emp.getLatestSchedule().values();
 
                         } else {
                             scheduleText.setText("You have no recent work history");
-                        }
+                        }*/
                     }
-                    scheduleText.setText(schedule);
+
                 }
             }
 
