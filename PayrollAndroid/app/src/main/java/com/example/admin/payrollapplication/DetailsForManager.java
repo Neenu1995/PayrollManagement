@@ -1,17 +1,11 @@
 package com.example.admin.payrollapplication;
 
 import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -24,13 +18,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DetailsForManager extends AppCompatActivity {
+    public static Context ctxt;
+    DatabaseReference mRootRef;
+    List<Employee> employees = new ArrayList<>();
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    DatabaseReference mRootRef;
-    public static Context ctxt;
-    //List<Employee> itemlist;
-    List<Employee> employees = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,21 +63,5 @@ public class DetailsForManager extends AppCompatActivity {
 
         // TODO: CHANGE THIS LIST TO THE LIST FROM FIREBASE TO GET THE ACTUAL DATA
 
-
-        /*for(int i = 0; i < 10; i++) {
-            Employee employee = new Employee();
-            employee.setEmployeeID(String.valueOf(i + 1));
-            employee.setFirstName(String.valueOf((char)(65 + i + 1)));
-            employee.setLastName(String.valueOf((char)(65 + i + 1)));
-            employees.add(employee);
-        }*/
-
-//        // specify an adapter (see also next example)
-//        mAdapter = new EmployeesAdapter(employees);
-//        recyclerView.setAdapter(mAdapter);
-
-//        // use a linear layout manager
-//        layoutManager = new LinearLayoutManager(this);
-//        recyclerView.setLayoutManager(layoutManager);
     }
 }

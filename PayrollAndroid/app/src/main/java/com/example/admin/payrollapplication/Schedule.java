@@ -1,38 +1,37 @@
 package com.example.admin.payrollapplication;
 
+import java.util.Map;
+
 public class Schedule {
-    String date;
-    String time;
+    Map<String, String> start;
+    Map<String, String> end;
+
+    public Schedule(Map<String, String> start, Map<String, String> end) {
+        this.start = start;
+        this.end = end;
+    }
+
+    public Map<String, String> getStart() {
+        return start;
+    }
+
+    public void setStart(Map<String, String> start) {
+        this.start = start;
+    }
+
+    public Map<String, String> getEnd() {
+        return end;
+    }
+
+    public void setEnd(Map<String, String> end) {
+        this.end = end;
+    }
 
     @Override
     public String toString() {
         return "Schedule{" +
-                "date='" + date + '\'' +
-                ", time='" + time + '\'' +
+                "start=" + start +
+                ", end=" + end +
                 '}';
-    }
-
-    public Schedule() {
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public Schedule(String date, String time) {
-        this.date = date;
-        this.time = time;
     }
 }

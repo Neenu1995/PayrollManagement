@@ -1,26 +1,26 @@
 package com.example.admin.payrollapplication;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.TextView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ *DetailsForEmployeeActivity is used to calculate the net pay of an employee
+ * for a given time period
+ *
+ * @author  Team6 COMP 313-001
+ * @version 1.0
+ * @since   10/4/2019
+ */
 public class DetailsForEmployeeActivity extends AppCompatActivity {
     public TextView emptxtFname;
     public TextView emptxtLname;
