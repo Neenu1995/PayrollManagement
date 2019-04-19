@@ -14,8 +14,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 /**
- *DetailsForEmployeeActivity is used to calculate the net pay of an employee
- * for a given time period
+ *DetailsForEmployeeActivity is display the details of an employee
+ * who is logged in
  *
  * @author  Team6 COMP 313-001
  * @version 1.0

@@ -20,6 +20,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *ScheduleActivity enables manager users to Schedule employees
+ *
+ * @author  Team6 COMP 313-001
+ * @version 1.0
+ * @since   10/4/2019
+ */
 public class ScheduleActivity extends AppCompatActivity {
 
     DatabaseReference reference;
@@ -93,8 +100,6 @@ public class ScheduleActivity extends AppCompatActivity {
                             Toast.makeText(ScheduleActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                         }
                     });
-//                    reference.child(key).child("schedule").setValue(schedule);
-//                    Toast.makeText(ScheduleActivity.this, eh, Toast.LENGTH_SHORT).show();
                 }
             }
         });

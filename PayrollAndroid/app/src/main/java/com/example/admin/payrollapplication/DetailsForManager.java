@@ -17,6 +17,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *DetailsForManagerActivity displays the details of all the employees
+ *
+ * @author  Team6 COMP 313-001
+ * @version 1.0
+ * @since   10/4/2019
+ */
 public class DetailsForManager extends AppCompatActivity {
     public static Context ctxt;
     DatabaseReference mRootRef;
@@ -52,8 +59,7 @@ public class DetailsForManager extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "There is some error", Toast.LENGTH_LONG).show();
             }
         });
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
+
         recyclerView.setHasFixedSize(true);
     }
 }

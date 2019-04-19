@@ -8,7 +8,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,7 +17,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ *RegistrationActivity displays registration page where new employees can be registered into the database
+ *
+ * @author  Team6 COMP 313-001
+ * @version 1.0
+ * @since   10/4/2019
+ */
 public class RegistrationActivity extends AppCompatActivity {
+    static Integer count = 0;
     EditText fnameText;
     EditText lnameText;
     EditText phoneText;
@@ -26,11 +33,7 @@ public class RegistrationActivity extends AppCompatActivity {
     EditText passwordText;
     EditText titleText;
     EditText addressText;
-    //ProgressBar progressBar;
     FirebaseAuth auth;
-
-    static Integer count = 0;
-
     Button submitBtn;
 
     // Write a message to the database

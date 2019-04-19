@@ -2,6 +2,9 @@ package com.example.admin.payrollapplication;
 
 import java.util.Map;
 
+/**
+ * Schedule Class stores the information of one Schedule information of the employee.
+ */
 public class Schedule {
     Map<String, String> start;
     Map<String, String> end;

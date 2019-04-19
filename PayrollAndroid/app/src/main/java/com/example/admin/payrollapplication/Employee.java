@@ -1,7 +1,11 @@
 package com.example.admin.payrollapplication;
 
 /**
+ *DetailsForManagerActivity displays the details of all the employees
  *
+ * @author  Team6 COMP 313-001
+ * @version 1.0
+ * @since   10/4/2019
  */
 public class Employee {
 

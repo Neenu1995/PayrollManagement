@@ -1,15 +1,13 @@
 package com.example.admin.payrollapplication;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,6 +17,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *ViewScheduleActivity displays the schedule details of the logged in employee
+ *
+ * @author  Team6 COMP 313-001
+ * @version 1.0
+ * @since   10/4/2019
+ */
 public class ViewScheduleActivity extends AppCompatActivity {
     // Write a message to the database
     private static final String TAG = "ViewScheduleActivity";
@@ -46,7 +51,7 @@ public class ViewScheduleActivity extends AppCompatActivity {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               // Employee emp = dataSnapshot.getValue(Employee.class);
+                // Employee emp = dataSnapshot.getValue(Employee.class);
                 Schedule emp = dataSnapshot.getValue(Schedule.class);
                 if(emp!=null){
                     scheduleText.setText(emp.toString());
