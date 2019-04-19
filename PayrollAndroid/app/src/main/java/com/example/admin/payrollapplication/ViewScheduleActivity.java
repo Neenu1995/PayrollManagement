@@ -51,7 +51,6 @@ public class ViewScheduleActivity extends AppCompatActivity {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // Employee emp = dataSnapshot.getValue(Employee.class);
                 Schedule emp = dataSnapshot.getValue(Schedule.class);
                 if(emp!=null){
                     scheduleText.setText(emp.toString());

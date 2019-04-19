@@ -85,7 +85,6 @@ public class ScheduleActivity extends AppCompatActivity {
                                 Employee temp = ds.getValue(Employee.class);
 
                                 if(temp.getEmail().equals(employeeEmail)){
-//                                    ds.child("schedule").getRef().setValue(schedule);
                                     ds.child("schedule").child("start").getRef().setValue(start);
                                     ds.child("schedule").child("end").getRef().setValue(end);
                                     reference.removeEventListener(this);

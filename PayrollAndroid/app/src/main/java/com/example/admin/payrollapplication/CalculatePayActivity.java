@@ -34,7 +34,6 @@ public class CalculatePayActivity extends AppCompatActivity {
     EditText ePayPerHr;
     EditText eOvtHrs;
     EditText eRegHrs;
-    EditText eGrossPay;
     EditText empId;
     double incomeTax;
     double txtgrossPay;
@@ -45,7 +44,6 @@ public class CalculatePayActivity extends AppCompatActivity {
     double empInsurance;
     double netPay;
     double overallDed;
-    double totalHrs;
     double grossPay;
     double totalDeduction;
     String employeeId;
@@ -57,7 +55,6 @@ public class CalculatePayActivity extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference("employee");
 
         empId = (EditText)findViewById(R.id.txtEmpId);
-        eGrossPay = (EditText)findViewById(R.id.txtGrossPay);
         eRegHrs = (EditText)findViewById(R.id.txtRegHrs);
         eOvtHrs = (EditText)findViewById(R.id.txtOvtHrs);
         ePayPerHr = (EditText)findViewById(R.id.txtPayPerHr);
@@ -72,14 +69,13 @@ public class CalculatePayActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 employeeId = empId.getText().toString();
-                txtgrossPay = Double.valueOf(eGrossPay.getText().toString());
                 regHrs = Double.valueOf(eRegHrs.getText().toString());
                 ovtHrs = Double.valueOf(eOvtHrs.getText().toString());
                 payPerHr = Double.valueOf(ePayPerHr.getText().toString());
                 cpp = Double.valueOf(eCpp.getText().toString());
                 empInsurance = Double.valueOf(eEmpInsurance.getText().toString());
-                totalHrs = regHrs + ovtHrs;
-                grossPay = payPerHr * totalHrs;
+
+                grossPay = payPerHr * regHrs + payPerHr*ovtHrs*1.5;
                 totalDeduction = empInsurance + cpp;
 
                 calculatePay();
@@ -93,7 +89,7 @@ public class CalculatePayActivity extends AppCompatActivity {
                             Employee temp = ds.getValue(Employee.class);
 
                             if(temp.getEmployeeID().equals(employeeId)){
-                                ds.child("hoursWorked").getRef().setValue(totalHrs);
+                                ds.child("hoursWorked").getRef().setValue(regHrs+ovtHrs);
                                 ds.child("pay").getRef().setValue(netPay);
                                 reference.removeEventListener(this);
                                 Intent intent = new Intent(CalculatePayActivity.this,MainActivity.class);
@@ -115,7 +111,7 @@ public class CalculatePayActivity extends AppCompatActivity {
      *
      * @return
      */
-    private double calculatePay(){
+    public double calculatePay(){
         if(grossPay > 0 && grossPay <= 47630){
             incomeTax = 0.15;
             overallDed = totalDeduction + (grossPay * incomeTax);

@@ -14,6 +14,9 @@ public class Schedule {
         this.end = end;
     }
 
+    public Schedule() {
+    }
+
     public Map<String, String> getStart() {
         return start;
     }
@@ -33,8 +36,8 @@ public class Schedule {
     @Override
     public String toString() {
         return "Schedule{" +
-                "start=" + start +
-                ", end=" + end +
+                "start=" + start.values() +
+                ", end=" + end.values() +
                 '}';
     }
 }
